@@ -1,0 +1,12 @@
+# docker compose run build-vyos-image --help
+services:
+  build-vyos-image:
+    image: vyos/vyos-build:current
+    privileged: true
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
+    volumes:
+    - "./:/vyos"
+    - "/dev:/dev"
+    working_dir: /vyos
+    entrypoint: ./build-vyos-image
